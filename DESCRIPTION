@@ -1,0 +1,9 @@
+Package: pjutils
+Title: Pingjia data calculation tools.
+Version: 0.0.0.9000
+Authors@R: person("Wei", "Zhao", email = "zhaowei@chinaubi.com", role = c("aut", "cre"))
+Description: Pingjia data calculation tools.
+Depends: R (>= 3.3.1)
+License: What license is it under?
+Encoding: UTF-8
+LazyData: true
