@@ -48,6 +48,7 @@ binary_search_r <- function(x, y, tol = sqrt(.Machine$double.eps)) {
 #' calculate the Mann-Whitney U statistic. This method is very fast, since we
 #' do not need to compute the ROC curve first.
 #'
+#' @param actual The actual value.
 #' @param predicted A numeric vector of predicted values, where the smallest values correspond
 #'                  to the observations most believed to be in the negative class
 #'                  and the largest values indicate the observations most believed
