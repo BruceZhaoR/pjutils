@@ -1,5 +1,5 @@
 #include <Rcpp.h>
-// #include <math.h>
+#include <math.h>
 using namespace Rcpp;
 
 // This is a simple example of exporting a C++ function to R. You can
@@ -24,7 +24,6 @@ using namespace Rcpp;
 int binary_search_cpp(double x, NumericVector y) {
   int startIdx = 0;
   int endIdx = y.size() - 1;
-  double tol = 1e17;
 
   while (startIdx <= endIdx) {
     int midIdx = (startIdx + endIdx) >> 1;
@@ -32,13 +31,10 @@ int binary_search_cpp(double x, NumericVector y) {
 
     if (midVal < x) {
       startIdx = midIdx + 1;
-    } else if (midVal > x){
+    } else if (midVal > x) {
       endIdx = midIdx - 1;
-    } else {
-      double a = abs(x - midVal);
-      if (a < tol) {
-        return midIdx;
-      }
+    } else if (fabs(x - midVal) < 1e-8) {
+         return midIdx;
     }
   }
   return startIdx;
@@ -51,7 +47,9 @@ int binary_search_cpp(double x, NumericVector y) {
 //
 
 /*** R
-cpp_binary_search(1:10, 9.6)
-cpp_binary_search(1:10, 1.2)
-cpp_binary_search(1:10, 5)
+binary_search_cpp(9.6, 1:10)
+binary_search_cpp(1.2, 1:10)
+binary_search_cpp(5.0, 1:10)
+binary_search_cpp(0.6, 1:10)
+binary_search_cpp(10.6, 1:10)
 */
