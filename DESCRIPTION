@@ -19,7 +19,9 @@ Suggests:
     rmarkdown,
     testthat,
     tibble,
-    tidyselect
+    tidyselect,
+    microbenchmark,
+    ggplot2
 LinkingTo: 
     Rcpp
 VignetteBuilder: knitr
