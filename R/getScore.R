@@ -16,19 +16,18 @@
 #' get_score(97.5, values, scores) # 0.59035
 #' get_score(77, values, scores) # 0.75308
 #'
-get_score <-function(riskfactor, values, scores){
+get_score <- function(riskfactor, values, scores) {
   # valuse and scores lenght should be equal
   stopifnot(length(values) == length(scores))
   stopifnot(is.vector(values) && is.vector(scores, mode = "numeric"))
 
   if (is.numeric(riskfactor)) {
-
-    if(riskfactor < values[1]){
+    if (riskfactor < values[1]) {
       return(scores[1])
     }
 
-    if(riskfactor > values[length(values)]){
-      return(0.0);
+    if (riskfactor > values[length(values)]) {
+      return(0.0)
     }
 
     if (length(values) < 10000) {
@@ -40,25 +39,25 @@ get_score <-function(riskfactor, values, scores){
     if (idx <= 1) {
       return(scores[1])
     }
-    if(idx > length(scores)){
+    if (idx > length(scores)) {
       return(scores[length(scores)])
     }
 
-    delta <- (riskfactor - values[idx-1]) / (values[idx] - values[idx-1])
+    delta <- (riskfactor - values[idx - 1]) / (values[idx] - values[idx - 1])
 
-    return(scores[idx-1] + delta * (scores[idx] - scores[idx-1]))
+    return(scores[idx - 1] + delta * (scores[idx] - scores[idx - 1]))
   }
   if (is.character(riskfactor)) {
     if (riskfactor %in% values) {
       idx <- grep(riskfactor, values, fixed = TRUE)
     } else {
       warning("the riskfactor is not in the values, use the first value score as default.",
-              call. = FALSE)
+        call. = FALSE
+      )
       idx <- 1
     }
     return(scores[idx])
   }
-
 }
 
 #' A wrapper of \code{\link{get_score}}
@@ -74,10 +73,10 @@ get_score <-function(riskfactor, values, scores){
 #' @examples
 #' get_score_vec(c(57.5, 97.5,77), values, scores)
 #'
-get_score_vec <-function(rf_vec, values, scores) {
+get_score_vec <- function(rf_vec, values, scores) {
   unlist(
     lapply(rf_vec, get_score, values, scores)
-    )
+  )
 }
 
 #' Raw risk factors value to score.
@@ -114,7 +113,7 @@ get_score_vec <-function(rf_vec, values, scores) {
 #' rf2score(pj_rf, score_config_list)
 #' }
 #'
-rf2score <- function(rf_df, score_config_list){
+rf2score <- function(rf_df, score_config_list) {
   if (nrow(rf_df) < 1) {
     stop("Input risk factors df is null")
   }
@@ -125,20 +124,22 @@ rf2score <- function(rf_df, score_config_list){
   #   stop(paste0("Please check your score_config_list which lenght should be ",
   #               2*df_dim[2], " but find ", length(score_config_list), " !"))
   # }
-  check_names <-  unlist(lapply(rf_names, paste0, c("_values","_scores")))
+  check_names <- unlist(lapply(rf_names, paste0, c("_values", "_scores")))
   miss_names <- setdiff(check_names, names(score_config_list))
   if (length(miss_names) > 1) {
     stop("Please check score_config_list names which should contain all risk factors' names")
   }
 
-  user_score <- matrix(data = NA, nrow = df_dim[1], ncol= df_dim[2])
+  user_score <- matrix(data = NA, nrow = df_dim[1], ncol = df_dim[2])
 
   i <- 1
   for (s in rf_names) {
     tmp <- rf_df[[s]]
     idx <- grep(s, names(score_config_list))
-    user_score[, i] <- get_score_vec(tmp, score_config_list[[idx[1]]],
-                                          score_config_list[[idx[2]]])
+    user_score[, i] <- get_score_vec(
+      tmp, score_config_list[[idx[1]]],
+      score_config_list[[idx[2]]]
+    )
 
     i <- i + 1
     print(paste("done:", s))
@@ -168,9 +169,8 @@ rf2score <- function(rf_df, score_config_list){
 #' @examples
 #' \dontrun{
 #' pj_rf <- readr::read_csv("data/pingjia/pingjia_result.csv",col_names = FALSE)
-#' nameTmp <- c("acc_count_phk","act_radius","dec_count_phk","high_curv_tr","holiday_tr",
-#'              "interstate_r","lane_change_phk","late_night_tr","long_tr","main_act_prov" ,
-#'              "mileage","speeding_lvl", "speeding_phk", "trip_dis_e", "turn_count_phk", "user_id")
+#' nameTmp <- c("acc_count_phk","act_radius","dec_count_phk","high_curv_tr","holiday_tr", "interstate_r","lane_change_phk","late_night_tr","long_tr",
+#' "main_act_prov" , "mileage","speeding_lvl", "speeding_phk", "trip_dis_e", "turn_count_phk", "user_id")
 #' names(pj_rf) <- nameTmp
 #'
 #' user_id <- pj_rf[["user_id"]]
@@ -184,7 +184,7 @@ rf2score <- function(rf_df, score_config_list){
 #'
 #' }
 #'
-sum_rf_score <- function(rf_score, rf_weight){
+sum_rf_score <- function(rf_score, rf_weight) {
   n_col <- ncol(rf_score)
   m_row <- nrow(rf_weight)
   stopifnot(n_col == m_row)
@@ -208,5 +208,4 @@ sum_rf_score <- function(rf_score, rf_weight){
     tibble::as_tibble(sum_score)
   }
   as.data.frame.matrix(sum_score, stringsAsFactors = FALSE)
-
 }

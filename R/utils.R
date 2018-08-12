@@ -18,7 +18,6 @@
 #' binary_search_r(11, 1:10)
 #'
 binary_search_r <- function(x, y, tol = sqrt(.Machine$double.eps)) {
-
   startIndex <- 1L
   endIndex <- length(y)
   stopifnot(is.numeric(x) && is.vector(y, mode = "numeric"))
@@ -69,4 +68,3 @@ auc <- function(actual, predicted) {
   n_neg <- length(actual) - n_pos
   return((sum(r[actual == 1]) - n_pos * (n_pos + 1) / 2) / (n_pos * n_neg))
 }
-

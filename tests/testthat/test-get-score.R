@@ -10,6 +10,8 @@ test_that("get_score works", {
   expect_equal(0.5748, get_score(100, values, scores))
   expect_equal(0, get_score(101, values, scores))
 
-  expect_equal(c(1, 0.98735, 0.59035, 0.75308, 0.5748, 0),
-               get_score_vec(c(55, 57.5, 97.5, 77, 100, 101), values, scores))
+  expect_equal(
+    c(1, 0.98735, 0.59035, 0.75308, 0.5748, 0),
+    get_score_vec(c(55, 57.5, 97.5, 77, 100, 101), values, scores)
+  )
 })

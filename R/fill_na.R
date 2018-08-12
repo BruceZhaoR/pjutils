@@ -20,7 +20,7 @@
 #' fill_na(xy, starts_with("x"))
 #' }
 #'
-#'@export
+#' @export
 fill_na <- function(x, ...) {
   UseMethod("fill_na")
 }
@@ -38,7 +38,7 @@ fill_na.default <- function(x, ...) {
 #' @inheritParams fill_na
 #' @export
 #' @rdname fill_na
-fill_na.tbl_df<- function(x, ...) {
+fill_na.tbl_df <- function(x, ...) {
   if (requireNamespace("dplyr", quietly = TRUE)) {
     fill_cols <- unname(tidyselect::vars_select(names(x), ...))
     for (col in fill_cols) {
@@ -74,5 +74,4 @@ fill_na.grouped_df <- function(x, ...) {
   } else {
     print("please library(dplyr) ")
   }
-
 }
