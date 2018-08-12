@@ -25,7 +25,8 @@
 #'              "mileage","speeding_lvl", "speeding_phk", "trip_dis_e", "turn_count_phk")
 #' cal_user_coef(pj_rf, risk_names, score_config_list, rf_weight, discount_index)
 #' }
-cal_user_coef <- function(df, risk_names, score_config_list, rf_weight, discount_index) {
+cal_user_coef <- function(df, risk_names, score_config_list,
+                          rf_weight, discount_index) {
 
   day_mileage <- round(df$day_mileage, 2)
 

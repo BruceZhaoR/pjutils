@@ -28,9 +28,9 @@ binary_search_r <- function(x, y, tol = sqrt(.Machine$double.eps)) {
     midValue <- y[midIndex]
 
     if (midValue < x - tol) {
-      startIndex = midIndex + 1L
+      startIndex <- midIndex + 1L
     } else if (midValue > x + tol) {
-      endIndex = midIndex - 1L
+      endIndex <- midIndex - 1L
     } else {
       return(midIndex)
     }

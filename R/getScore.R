@@ -133,14 +133,14 @@ rf2score <- function(rf_df, score_config_list){
 
   user_score <- matrix(data = NA, nrow = df_dim[1], ncol= df_dim[2])
 
-  i = 1
+  i <- 1
   for (s in rf_names) {
     tmp <- rf_df[[s]]
     idx <- grep(s, names(score_config_list))
     user_score[, i] <- get_score_vec(tmp, score_config_list[[idx[1]]],
                                           score_config_list[[idx[2]]])
 
-    i = i + 1
+    i <- i + 1
     print(paste("done:", s))
   }
 
@@ -195,7 +195,7 @@ sum_rf_score <- function(rf_score, rf_weight){
 
   weight_names <- rf_weight[[1]]
   idx <- integer(n_col)
-  i = 1L
+  i <- 1L
   for (name in names(rf_score)) {
     idx[i] <- grep(name, weight_names, perl = TRUE)
     i <- i + 1
