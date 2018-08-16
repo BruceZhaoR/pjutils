@@ -1,0 +1,49 @@
+navbar:
+  structure:
+    left:  [home, intro, reference, articles, tutorials, news]
+    right: [github]
+
+url: https://github.com/BruceZhaoR/pjutils
+
+authors:
+  Wei Zhao:
+    href: https://brucezhaor.github.io
+
+template:
+  params:
+    bootswatch: cerulean
+
+development:
+  mode: unreleased
+
+reference:
+  - title: Binary Search
+    contents:
+    - binary_search_r
+    - binary_search_cpp
+  - title: Get Score
+    desc: Find the score of the given x in vector y.
+    contents:
+    - get_score
+    - get_score_vec
+  - title: Risk Fastors to Score
+    contents:
+    - rf2score
+    - sum_rf_score
+    - cal_user_coef
+  - title: Helper
+    contents:
+    - pjutils
+    - pjutils-package
+  - title: Fill NA
+    desc: More efficient way of filling nas in native R code.
+    contents:
+    - fill_na
+    - fill_na.data.frame
+    - fill_na.tbl_df
+    - fill_na.grouped_df
+  - title: Calculate AUC
+    contents:
+    - auc
+
+

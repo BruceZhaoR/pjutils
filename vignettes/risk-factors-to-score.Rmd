@@ -1,5 +1,16 @@
 ---
 title: "A Demo of Risk Factors To Score"
+resource_files:
+  - css/tactile.css
+  - css/github.css
+  - fonts/open-sans-700.woff
+  - fonts/open-sans-400.woff
+  - templates/tactile.html
+  - images/highlight-bg.jpg
+  - images/body-bg.png
+  - js/tabsets.js
+  - js/codefolding.js
+  - js/sourceembed.js
 author: "Wei Zhao"
 date: "`r Sys.Date()`"
 output: 
