@@ -1,47 +1,15 @@
----
-title: "A Demo of Risk Factors To Score"
-author: "Wei Zhao"
-date: "`r Sys.Date()`"
-output: 
-  rmarkdown::html_document:    
-    toc: true
-    number_sections: true
-    css:
-      - E:/A-pkg-dev/pjutils/vignettes/css/tactile.css
-      - E:/A-pkg-dev/pjutils/vignettes/css/github.css
-    template: E:/A-pkg-dev/pjutils/vignettes/templates/tactile.html
-    mathjax: NULL
-    self_contained: true
-vignette: >
-  %\VignetteIndexEntry{risk factors to score demo}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
----
-
-```{r setup, include = FALSE}
+## ----setup, include = FALSE----------------------------------------------
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
 options(tibble.print_min = 4L, tibble.print_max = 4L)
-```
 
-**For the best result printing, let't `library(tibble)` or `dplyr`.**    
-
-
-```{r load-pkg}
+## ----load-pkg------------------------------------------------------------
 library(pjutils)
 library(tibble)
-```
 
-# A demo of using the functions     
-
-The binary search have two version:    
-
-- r version, start from **`1`**, which if faster when the `length(y)` is large than 1e5.
-- cpp version start form **`0`**, which if faster when `length(y)` is small than 1e5.
-
-```{r demo-bs}
+## ----demo-bs-------------------------------------------------------------
 # binary search
 binary_search_r(1.3, 1:10)
 binary_search_cpp(1.3, 1:10)
@@ -54,12 +22,8 @@ binary_search_cpp(0.9, 1:10)
 
 binary_search_r(10.9, 1:10)
 binary_search_cpp(10.9, 1:10)
-```
 
-The `get_score` apply to a sigle value while `get_socre_vec` can apply to a
-vector of vaues: 
-
-```{r demo-getScore}
+## ----demo-getScore-------------------------------------------------------
 # get score
 values <- c(55, 60, 65, 70, 75, 80, 85, 90, 95, 100)
 scores <- c(1.0000, 0.9747, 0.8967, 0.8303, 0.7730, 0.7232, 0.6793, 0.6405, 
@@ -73,11 +37,8 @@ get_score(101, values, scores)
 
 get_score_vec(c(55, 57.5, 97.5, 77, 100, 101), values, scores)
 
-```
 
-# Benchmark
-
-```{r benchmark, cache=TRUE,fig.width=7, fig.height=5,fig.align='center',out.width='100%'}
+## ----benchmark, cache=TRUE, fig.width=7, fig.height=5, fig.align='center'----
 set.seed(12345)
 aa <- runif(100000, 1, 1000)
 bb <- microbenchmark::microbenchmark(
@@ -89,11 +50,8 @@ bb
 
 microbenchmark::autoplot.microbenchmark(bb)
 
-```
 
-# A tidyverse workflow
-
-```{r demo-magrittr}
+## ----demo-magrittr-------------------------------------------------------
 library(dplyr)
 tmp <- tibble(
   acc_count_phk   = 5.281214,
@@ -106,7 +64,7 @@ tmp <- tibble(
   lane_change_phk = 2.108227,
   late_night_tr   = 0.01764706,
   long_tr         = 0.002941176,
-  main_act_prov   = "江苏省",
+  main_act_prov   = "����ʡ",
   mileage         = 14077.86,
   speeding_lvl    = 0      ,
   speeding_phk    = 24.97929,
@@ -139,13 +97,7 @@ tmp %>%
 
 # all in one
 result <- cal_user_coef(tmp, risk_names, score_config_list, rf_weight, discount_index)
-```
 
-Here is the result table:
-
-```{r result-table, echo=FALSE}
+## ----result-table, echo=FALSE--------------------------------------------
 knitr::kable(result)
-```
 
-<p style="text-align: center;margin-bottom:-5px;"> That's the end of doc! &nbsp;&nbsp; (我是有底线的 ^_^)</p>
--------------------------------------------------------------------------------

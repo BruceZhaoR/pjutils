@@ -4,6 +4,6 @@ pkgdown_sha: ~
 articles:
   risk-factors-to-score: risk-factors-to-score.html
 urls:
-  reference: https://github.com/BruceZhaoR/pjutils/reference
-  article: https://github.com/BruceZhaoR/pjutils/articles
+  reference: https://brucezhaor.github.io/pjutils//reference
+  article: https://brucezhaor.github.io/pjutils//articles
 

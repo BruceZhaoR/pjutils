@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Articles • pjutils</title>
+<title>Area under the ROC curve (AUC) — auc • pjutils</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,7 +30,10 @@
 
 
 
-<meta property="og:title" content="Articles" />
+<meta property="og:title" content="Area under the ROC curve (AUC) — auc" />
+
+<meta property="og:description" content="auc computes the area under the receiver-operator characteristic curve (AUC)." />
+<meta name="twitter:card" content="summary" />
 
 
 
@@ -46,7 +49,7 @@
   </head>
 
   <body>
-    <div class="container template-article-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -112,17 +115,60 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Articles</h1>
+    <h1>Area under the ROC curve (AUC)</h1>
+    <small class="dont-index">Source: <a href='https://github.com/BruceZhaoR/pjutils/blob/master/R/utils.R'><code>R/utils.R</code></a></small>
+    <div class="hidden name"><code>auc.Rd</code></div>
     </div>
 
-    <div class="section ">
-      <h3>All vignettes</h3>
-      <p class="section-desc"></p>
-
-      <ul>
-        <li><a href="risk-factors-to-score.html">A Demo of Risk Factors To Score</a></li>
-      </ul>
+    <div class="ref-description">
+    
+    <p><code>auc</code> computes the area under the receiver-operator characteristic curve (AUC).</p>
+    
     </div>
+
+    <pre class="usage"><span class='fu'>auc</span>(<span class='no'>actual</span>, <span class='no'>predicted</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>actual</th>
+      <td><p>The actual value.</p></td>
+    </tr>
+    <tr>
+      <th>predicted</th>
+      <td><p>A numeric vector of predicted values, where the smallest values correspond
+to the observations most believed to be in the negative class
+and the largest values indicate the observations most believed
+to be in the positive class. Each element represents the
+prediction for the corresponding element in <code>actual</code>.</p></td>
+    </tr>
+    </table>
+    
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p><code>auc</code> uses the fact that the area under the ROC curve is equal to the probability
+that a randomly chosen positive observation has a higher predicted value than a
+randomly chosen negative value. In order to compute this probability, we can
+calculate the Mann-Whitney U statistic. This method is very fast, since we
+do not need to compute the ROC curve first.</p>
+    
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='no'>actual</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>0</span>)
+<span class='no'>predicted</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='fl'>0.9</span>, <span class='fl'>0.8</span>, <span class='fl'>0.4</span>, <span class='fl'>0.5</span>, <span class='fl'>0.3</span>, <span class='fl'>0.2</span>)
+<span class='fu'>auc</span>(<span class='no'>actual</span>, <span class='no'>predicted</span>)</div><div class='output co'>#&gt; [1] 0.8888889</div></pre>
+  </div>
+  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+    <h2>Contents</h2>
+    <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
+      
+      <li><a href="#details">Details</a></li>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
+
   </div>
 </div>
 
