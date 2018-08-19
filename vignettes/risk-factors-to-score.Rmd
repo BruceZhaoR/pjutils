@@ -7,11 +7,12 @@ output:
     toc: true
     number_sections: true
     css:
-      - E:/A-pkg-dev/pjutils/vignettes/css/tactile.css
-      - E:/A-pkg-dev/pjutils/vignettes/css/github.css
-    template: E:/A-pkg-dev/pjutils/vignettes/templates/tactile.html
+      - "./vignettes/css/tactile.css"
+      - "./vignettes/css/github.css"
+    template: "./vignettes/templates/tactile.html"
     mathjax: NULL
     self_contained: true
+    keep_md: true
 vignette: >
   %\VignetteIndexEntry{risk factors to score demo}
   %\VignetteEngine{knitr::rmarkdown}

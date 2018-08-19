@@ -55,10 +55,10 @@ authors:
     href: https://brucezhaor.github.io
   Shanghai Pingjia Technology Co.,Ltd:
     href: http://www.chinaubi.com
-    html:
-      '<img src="http://www.chinaubi.com/wp-content/uploads/2016/09/logo.png" height="24" /><span style="margin-left: -100px;">Shanghai Pingjia Technology Co.,Ltd:</span>'
+    html: '<img src="http://www.chinaubi.com/wp-content/uploads/2016/09/logo.png" height="24" /><span style="margin-left: -100px;">Shanghai Pingjia Technology Co.,Ltd:</span>'
 
 template:
+  path: inst/pkgdown/templates
   assets: inst/pkgdown/assets
   params:
     bootswatch: flatly
