@@ -1,6 +1,6 @@
 Package: pjutils
 Title: Pingjia data calculation tools
-Version: 0.0.0.9002
+Version: 0.0.0.9003
 Authors@R: c(
   person("Wei", "Zhao", email = "zhaowei@chinaubi.com", role = c("aut", "cre")),
   person("Shanghai Pingjia Technology Co.,Ltd", role = "cph")
@@ -8,7 +8,7 @@ Authors@R: c(
 Description: Pingjia data calculation tools.
 License: MIT + file LICENSE
 URL: https://github.com/BruceZhaoR/pjutils
-BugReports: https://github.com/BruceZhaoR/pjutils/issues 
+BugReports: https://github.com/BruceZhaoR/pjutils/issues
 Depends: 
     R (>= 3.5)
 Imports: 
@@ -22,7 +22,7 @@ Suggests:
     tidyselect,
     microbenchmark,
     ggplot2,
-    prettydoc
+    covr
 LinkingTo: 
     Rcpp
 VignetteBuilder: knitr

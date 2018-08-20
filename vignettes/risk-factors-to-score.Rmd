@@ -3,15 +3,8 @@ title: "A Demo of Risk Factors To Score"
 author: "Wei Zhao"
 date: "`r Sys.Date()`"
 output: 
-  prettydoc::html_pretty:
-    theme: tactile
-    highlight: github
-    toc: true
-    number_sections: true
-    mathjax: NULL
-    self_contained: true
+  rmarkdown::html_vignette:
     keep_md: true
-    fig_retina: 2
 vignette: >
   %\VignetteIndexEntry{risk factors to score demo}
   %\VignetteEngine{knitr::rmarkdown}
@@ -147,5 +140,3 @@ Here is the result table:
 knitr::kable(result)
 ```
 
-<p style="text-align: center;margin-bottom:-5px;"> That's the end of doc! &nbsp;&nbsp; (我是有底线的 ^_^)</p>
--------------------------------------------------------------------------------

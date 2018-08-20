@@ -82,10 +82,6 @@ reference:
     - rf2score
     - sum_rf_score
     - cal_user_coef
-  - title: Helper
-    contents:
-    - pjutils
-    - pjutils-package
   - title: Fill NA
     desc: More efficient way of filling nas in native R code.
     contents:
@@ -96,4 +92,8 @@ reference:
   - title: Calculate AUC
     contents:
     - auc
+  - title: Helper
+    contents:
+    - pjutils
+    - pjutils-package
 

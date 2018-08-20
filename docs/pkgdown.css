@@ -30,9 +30,8 @@
 html, body {
   height: 100%;
   font-size: 16px;
-  line-height: 1.5;
   font-family: "Open Sans", "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color: #090c10
+  color: #1a2122
 }
 
 body > .container {
@@ -102,6 +101,20 @@ a {
 }
 a:hover {
   color: rgb(8, 92, 4);
+}
+
+hr {
+  height: 1px;
+  line-height: 1px;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  border: none;
+  background: #aaa;
+  background-image: linear-gradient(to right, #eee, #aaa, #eee);
+}
+
+.page-header {
+  border-bottom: 1px solid #eeeeee;
 }
 
 img.icon {
@@ -246,22 +259,15 @@ a.sourceLine:hover {
   text-decoration: none;
 }
 
-code > span.kw { color: #a71d5d; font-weight: normal; } /* Keyword */
-code > span.dt { color: #795da3; } /* DataType */
-code > span.dv { color: #0086b3; } /* DecVal */
-code > span.bn { color: #0086b3; } /* BaseN */
-code > span.fl { color: #0086b3; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #183691; } /* String */
-code > span.co { color: #969896; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-
-
-/* .fl       {color: #0086b3;} */ /* Float */
-/* .fu      {color: #000000;}  *//* function */
-/* .ch,.st  {color: #036a07;}  *//* string */
-/* .kw      {color: #264D66;}  *//* keyword */
-/* .co      {color: #888888; font-style: italic;} */ /* comment */
+.kw { color: #a71d5d; font-weight: normal; } /* Keyword */
+.dt { color: #795da3; } /* DataType */
+.dv { color: #0086b3; } /* DecVal */
+.bn { color: #0086b3; } /* BaseN */
+.fl { color: #0086b3; } /* Float */
+.ch { color: #4070a0; } /* Char */
+.st { color: #183691; } /* String */
+.co { color: #969896; font-style: italic; } /* Comment */
+.ot { color: #007020; } /* Other */
 
 .message { color: black;   font-weight: bolder;}
 .error   { color: orange;  font-weight: bolder;}

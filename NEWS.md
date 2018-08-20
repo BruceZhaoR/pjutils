@@ -1,3 +1,12 @@
+# putils 0.0.0.9003
+
+* change mathjax to cndjs
+* custom head with favicon.ico
+* custom footer with &hearts;
+* custom pkgdown.css
+* add travis ci
+* add appveyor
+
 # pjutils 0.0.0.9002
 
 * add vignettes
