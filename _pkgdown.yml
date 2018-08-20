@@ -3,13 +3,14 @@ url: https://brucezhaor.github.io/pjutils/
 navbar:
   type: default
   left:
-  - icon: fa-home fa-lag
+  - icon: fa-home fa-lg
     href: index.html
   - text: Intro
     href: articles/risk-factors-to-score.html
   - text: Reference
     href: reference/index.html
   - text: Articles
+    href: articles/index.html
     menu:
     - text: A Demo of Risk Factors To Score
       href: articles/risk-factors-to-score.html
@@ -49,7 +50,6 @@ navbar:
 #      icon: fa-github fa-lg
 #      href: https://github.com/BruceZhaoR/pjutils
 
-
 authors:
   Wei Zhao:
     href: https://brucezhaor.github.io
@@ -58,8 +58,8 @@ authors:
     html: '<img src="http://www.chinaubi.com/wp-content/uploads/2016/09/logo.png" height="24" /><span style="margin-left: -100px;">Shanghai Pingjia Technology Co.,Ltd:</span>'
 
 template:
-  path: inst/pkgdown/templates
-  assets: inst/pkgdown/assets
+  path: "./inst/pkgdown/templates"
+  assets: "./inst/pkgdown/assets"
   params:
     bootswatch: flatly
 

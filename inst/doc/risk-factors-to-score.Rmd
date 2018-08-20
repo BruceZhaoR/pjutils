@@ -6,13 +6,13 @@ output:
   rmarkdown::html_document:    
     toc: true
     number_sections: true
-    css: 
-      - css/tactile.css
-      - css/github.css
-    template: templates/tactile.html
-    mathjax: null
+    css:
+      - "../vignettes/css/tactile.css"
+      - "../vignettes/css/github.css"
+    template: "../vignettes/templates/tactile.html"
+    mathjax: NULL
     self_contained: true
-    fig_retina: 2
+    keep_md: true
 vignette: >
   %\VignetteIndexEntry{risk factors to score demo}
   %\VignetteEngine{knitr::rmarkdown}
@@ -76,9 +76,9 @@ get_score_vec(c(55, 57.5, 97.5, 77, 100, 101), values, scores)
 
 ```
 
-## Benchmark
+# Benchmark
 
-```{r benchmark, cache=TRUE, fig.width=7, fig.height=5, fig.align='center'}
+```{r benchmark, cache=TRUE,fig.width=7, fig.height=5,fig.align='center',out.width='100%'}
 set.seed(12345)
 aa <- runif(100000, 1, 1000)
 bb <- microbenchmark::microbenchmark(

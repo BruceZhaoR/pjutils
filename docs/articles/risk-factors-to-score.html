@@ -5,6 +5,9 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="Bruce Zhao">
+<!-- 国产高速渲染 --><meta name="renderer" content="webkit">
+<link rel="shortcut icon" href="favicon.ico">
 <title>A Demo of Risk Factors To Score • pjutils</title>
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
@@ -37,7 +40,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lag"></span>
+    <span class="fa fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -85,7 +88,7 @@
       <h1>A Demo of Risk Factors To Score</h1>
                         <h4 class="author">Wei Zhao</h4>
             
-            <h4 class="date">2018-08-17</h4>
+            <h4 class="date">2018-08-20</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/BruceZhaoR/pjutils/blob/master/vignettes/risk-factors-to-score.Rmd"><code>vignettes/risk-factors-to-score.Rmd</code></a></small>
       <div class="hidden name"><code>risk-factors-to-score.Rmd</code></div>
@@ -147,9 +150,10 @@ scores &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">
 
 <span class="kw"><a href="../reference/get_score.html">get_score_vec</a></span>(<span class="kw">c</span>(<span class="dv">55</span>, <span class="fl">57.5</span>, <span class="fl">97.5</span>, <span class="dv">77</span>, <span class="dv">100</span>, <span class="dv">101</span>), values, scores)
 <span class="co">#&gt; [1] 1.00000 0.98735 0.59035 0.75308 0.57480 0.00000</span></code></pre></div>
-<div id="benchmark" class="section level2">
-<h2 class="hasAnchor">
-<a href="#benchmark" class="anchor"></a>Benchmark</h2>
+</div>
+<div id="benchmark" class="section level1">
+<h1 class="hasAnchor">
+<a href="#benchmark" class="anchor"></a>Benchmark</h1>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">12345</span>)
 aa &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">100000</span>, <span class="dv">1</span>, <span class="dv">1000</span>)
 bb &lt;-<span class="st"> </span>microbenchmark<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/microbenchmark/topics/microbenchmark">microbenchmark</a></span>(
@@ -159,18 +163,14 @@ bb &lt;-<span class="st"> </span>microbenchmark<span class="op">::</span><span c
 )
 bb
 <span class="co">#&gt; Unit: milliseconds</span>
-<span class="co">#&gt;  expr       min        lq      mean    median        uq       max neval</span>
-<span class="co">#&gt;     r 2527.4906 2545.3087 2620.1891 2573.5282 2676.2385 2811.1823    10</span>
-<span class="co">#&gt;   cpp  200.8516  204.1627  227.9371  218.4649  236.6916  310.3365    10</span>
-<span class="co">#&gt;  cld</span>
-<span class="co">#&gt;    b</span>
-<span class="co">#&gt;   a</span>
+<span class="co">#&gt;  expr       min        lq      mean   median        uq       max neval cld</span>
+<span class="co">#&gt;     r 2643.7919 2696.7185 2769.0290 2750.752 2820.1656 3004.6030    10   b</span>
+<span class="co">#&gt;   cpp  203.5169  215.6348  240.6771  231.216  249.0611  303.6098    10  a</span>
 
 microbenchmark<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/microbenchmark/topics/autoplot.microbenchmark">autoplot.microbenchmark</a></span>(bb)
 <span class="co">#&gt; Loading required namespace: ggplot2</span>
 <span class="co">#&gt; Coordinate system already present. Adding new coordinate system, which will replace the existing one.</span></code></pre></div>
 <p><img src="risk-factors-to-score_files/figure-html/benchmark-1.png" width="100%" style="display: block; margin: auto;"></p>
-</div>
 </div>
 <div id="a-tidyverse-workflow" class="section level1">
 <h1 class="hasAnchor">
@@ -297,11 +297,8 @@ That’s the end of doc!    (我是有底线的 ^_^)
       <h2 class="hasAnchor">
 <a href="#tocnav" class="anchor"></a>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
-<li>
-<a href="#a-demo-of-using-the-functions">A demo of using the functions</a><ul class="nav nav-pills nav-stacked">
-<li><a href="#benchmark">Benchmark</a></li>
-      </ul>
-</li>
+<li><a href="#a-demo-of-using-the-functions">A demo of using the functions</a></li>
+      <li><a href="#benchmark">Benchmark</a></li>
       <li><a href="#a-tidyverse-workflow">A tidyverse workflow</a></li>
       </ul>
 </div>

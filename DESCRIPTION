@@ -21,7 +21,8 @@ Suggests:
     tibble,
     tidyselect,
     microbenchmark,
-    ggplot2
+    ggplot2,
+    prettydoc
 LinkingTo: 
     Rcpp
 VignetteBuilder: knitr

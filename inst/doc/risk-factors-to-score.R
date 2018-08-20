@@ -38,7 +38,7 @@ get_score(101, values, scores)
 get_score_vec(c(55, 57.5, 97.5, 77, 100, 101), values, scores)
 
 
-## ----benchmark, cache=TRUE, fig.width=7, fig.height=5, fig.align='center'----
+## ----benchmark, cache=TRUE,fig.width=7, fig.height=5,fig.align='center',out.width='100%'----
 set.seed(12345)
 aa <- runif(100000, 1, 1000)
 bb <- microbenchmark::microbenchmark(
