@@ -169,8 +169,10 @@ rf2score <- function(rf_df, score_config_list) {
 #' @examples
 #' \dontrun{
 #' pj_rf <- readr::read_csv("data/pingjia/pingjia_result.csv",col_names = FALSE)
-#' nameTmp <- c("acc_count_phk","act_radius","dec_count_phk","high_curv_tr","holiday_tr", "interstate_r","lane_change_phk","late_night_tr","long_tr",
-#' "main_act_prov" , "mileage","speeding_lvl", "speeding_phk", "trip_dis_e", "turn_count_phk", "user_id")
+#' nameTmp <- c("acc_count_phk","act_radius","dec_count_phk","high_curv_tr",
+#' "holiday_tr", "interstate_r","lane_change_phk","late_night_tr","long_tr",
+#' "main_act_prov" , "mileage","speeding_lvl", "speeding_phk", "trip_dis_e",
+#' "turn_count_phk", "user_id")
 #' names(pj_rf) <- nameTmp
 #'
 #' user_id <- pj_rf[["user_id"]]
