@@ -45,5 +45,5 @@ rf2score(pj_rf, score_config_list)
 
 }
 \author{
-ZhaoWei
+\href{https://github.com/BruceZhaoR}{Wei Zhao}
 }

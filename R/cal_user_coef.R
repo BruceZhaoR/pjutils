@@ -13,7 +13,7 @@
 #' @param discount_index Specified score and coef.
 #'
 #' @return a \code{\link[tibble:as_tibble]{tibble}} / data.frame
-#' @author ZhaoWei
+#' @author \href{https://github.com/BruceZhaoR}{Wei Zhao}
 #' @export
 #'
 #' @examples

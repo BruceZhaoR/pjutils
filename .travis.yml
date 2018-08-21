@@ -12,9 +12,18 @@ os:
   - linux
   - osx
 
+brew_packages:
+  - libgit2
+
 r:
   - release
   - devel
+
+r_binary_packages:
+  - devtools
+  - Rcpp
+  - microbenchmark
+  - covr
 
 repos:
   CRAN: https://cloud.r-project.org

@@ -37,5 +37,5 @@ get_score_vec(c(57.5, 97.5,77), values, scores)
 
 }
 \author{
-ZhaoWei
+\href{https://github.com/BruceZhaoR}{Wei Zhao}
 }

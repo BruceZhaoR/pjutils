@@ -2,7 +2,7 @@
 #' Get the score of a risk factor according to the given config.
 #'
 #'
-#' @author ZhaoWei
+#' @author \href{https://github.com/BruceZhaoR}{Wei Zhao}
 #' @param riskfactor Raw risk factor.
 #' @param values Specified risk factors.
 #' @param scores Specified score according to the value.
@@ -94,7 +94,7 @@ get_score_vec <- function(rf_vec, values, scores) {
 #' @param rf_df Risk factors data frame(exclude user_id)
 #' @param score_config_list A List contains all riskFactors value and score
 #'   index, read from .RDS file.
-#' @author ZhaoWei
+#' @author \href{https://github.com/BruceZhaoR}{Wei Zhao}
 #' @export
 #' @return a \code{\link[tibble:as_tibble]{tibble}} with every risk factor score
 #' @examples
@@ -160,7 +160,7 @@ rf2score <- function(rf_df, score_config_list) {
 #' You should carefull about the risk facotrs \code{rf_score} names and the
 #' \code{rf_weight} names,they should be the same.
 #'
-#' @author ZhaoWei
+#' @author \href{https://github.com/BruceZhaoR}{Wei Zhao}
 #' @param rf_score The result of rf2score
 #' @param rf_weight Risk factors weight, sum to 1.
 #' @return A n*1 tibble/data.frame, the name is \code{score}.

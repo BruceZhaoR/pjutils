@@ -40,5 +40,5 @@ sum_rf_score(rf_score, rf_weight)
 
 }
 \author{
-ZhaoWei
+\href{https://github.com/BruceZhaoR}{Wei Zhao}
 }

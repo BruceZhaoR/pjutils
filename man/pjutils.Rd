@@ -9,3 +9,6 @@
 This package wraps the most common used functions for calculating risk factors
 to score and some other userful functions.
 }
+\author{
+\href{https://github.com/BruceZhaoR}{Wei Zhao}
+}

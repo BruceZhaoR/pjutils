@@ -5,7 +5,7 @@
 #'
 #' @name pjutils
 #' @docType package
-#'
+#' @author \href{https://github.com/BruceZhaoR}{Wei Zhao}
 #' @useDynLib pjutils, .registration = TRUE
 #' @importFrom Rcpp sourceCpp
 NULL

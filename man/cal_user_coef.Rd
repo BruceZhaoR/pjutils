@@ -37,5 +37,5 @@ cal_user_coef(pj_rf, risk_names, score_config_list, rf_weight, discount_index)
 }
 }
 \author{
-ZhaoWei
+\href{https://github.com/BruceZhaoR}{Wei Zhao}
 }

@@ -28,5 +28,5 @@ binary_search_r(11, 1:10)
 
 }
 \author{
-ZhaoWei
+\href{https://github.com/BruceZhaoR}{Wei Zhao}
 }

@@ -1,7 +1,7 @@
 
 #' Get the position of x in vector y
 #'
-#' @author ZhaoWei
+#' @author \href{https://github.com/BruceZhaoR}{Wei Zhao}
 #' @param x A numeric value
 #' @param y A numeric vector
 #' @param tol double equal tolerance
