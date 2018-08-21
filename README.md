@@ -18,7 +18,7 @@ devtools:intall_github("BruceZhaoR/pjutils")
 
 ## Example
 
-Please see the [pacakge doc](https://brucezhaor.github.io/pjuitls/) and [articles](https://brucezhaor.github.io/pjutils/articles/index.html) .
+Please see the [pacakge doc](https://brucezhaor.github.io/pjuitls/index.html) and [articles](https://brucezhaor.github.io/pjutils/articles/index.html) .
 
 Please note that this project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md).
 By participating in this project you agree to abide by its terms.

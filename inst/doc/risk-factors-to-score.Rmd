@@ -3,15 +3,7 @@ title: "A Demo of Risk Factors To Score"
 author: "Wei Zhao"
 date: "`r Sys.Date()`"
 output: 
-  rmarkdown::html_document:    
-    toc: true
-    number_sections: true
-    css:
-      - "../vignettes/css/tactile.css"
-      - "../vignettes/css/github.css"
-    template: "../vignettes/templates/tactile.html"
-    mathjax: NULL
-    self_contained: true
+  rmarkdown::html_vignette:
     keep_md: true
 vignette: >
   %\VignetteIndexEntry{risk factors to score demo}
@@ -63,8 +55,10 @@ vector of vaues:
 ```{r demo-getScore}
 # get score
 values <- c(55, 60, 65, 70, 75, 80, 85, 90, 95, 100)
-scores <- c(1.0000, 0.9747, 0.8967, 0.8303, 0.7730, 0.7232, 0.6793, 0.6405, 
-            0.6059, 0.5748)
+scores <- c(
+  1.0000, 0.9747, 0.8967, 0.8303, 0.7730, 0.7232, 0.6793, 0.6405,
+  0.6059, 0.5748
+)
 get_score(55, values, scores)
 get_score(57.5, values, scores)
 get_score(97.5, values, scores)
@@ -73,12 +67,11 @@ get_score(100, values, scores)
 get_score(101, values, scores)
 
 get_score_vec(c(55, 57.5, 97.5, 77, 100, 101), values, scores)
-
 ```
 
 # Benchmark
 
-```{r benchmark, cache=TRUE,fig.width=7, fig.height=5,fig.align='center',out.width='100%'}
+```{r benchmark,eval=FALSE}
 set.seed(12345)
 aa <- runif(100000, 1, 1000)
 bb <- microbenchmark::microbenchmark(
@@ -92,61 +85,99 @@ microbenchmark::autoplot.microbenchmark(bb)
 
 ```
 
+```{r benchmark-result,echo=FALSE,fig.width=7,fig.height=5,fig.align='center',out.width='100%'}
+knitr::include_graphics("benchmark-1.png",dpi = 200)
+```
+
 # A tidyverse workflow
 
-```{r demo-magrittr}
+```{r demo-magrittr,eval=FALSE}
 library(dplyr)
 tmp <- tibble(
-  acc_count_phk   = 5.281214,
-  act_radius      = 513765.4,
-  day_mileage     = 12345,
-  dec_count_phk   = 3.492416,
-  high_curv_tr    = 0.06097561,
-  holiday_tr      = 0.07058824,
-  interstate_r    = 0      ,
+  acc_count_phk = 5.281214,
+  act_radius = 513765.4,
+  day_mileage = 12345,
+  dec_count_phk = 3.492416,
+  high_curv_tr = 0.06097561,
+  holiday_tr = 0.07058824,
+  interstate_r = 0,
   lane_change_phk = 2.108227,
-  late_night_tr   = 0.01764706,
-  long_tr         = 0.002941176,
-  main_act_prov   = "江苏省",
-  mileage         = 14077.86,
-  speeding_lvl    = 0      ,
-  speeding_phk    = 24.97929,
-  trip_dis_e      = 3.359256,
-  turn_count_phk  = 3.300759,
-  user_id         = 2069
+  late_night_tr = 0.01764706,
+  long_tr = 0.002941176,
+  main_act_prov = "江苏省",
+  mileage = 14077.86,
+  speeding_lvl = 0,
+  speeding_phk = 24.97929,
+  trip_dis_e = 3.359256,
+  turn_count_phk = 3.300759,
+  user_id = 2069
 )
 tmp
 
 # read config file
-score_config_list <- readRDS("E:/A-r-wd/1-test/result/score_config_list.RDS")
-rf_weight <- readRDS("E:/A-r-wd/1-test/result/rf_weight.RDS")
-discount_index <- readRDS("E:/A-r-wd/1-test/result/dicount_index.RDS")
+score_config_list <- readRDS("path/to/score_config_list.RDS")
+rf_weight <- readRDS("path/to/rf_weight.RDS")
+discount_index <- readRDS("path/to/dicount_index.RDS")
 
-risk_names <- c("mileage","speeding_phk","speeding_lvl","acc_count_phk",
-                "dec_count_phk","turn_count_phk","lane_change_phk","long_tr",
-                "late_night_tr","holiday_tr","high_curv_tr","trip_dis_e",
-                "act_radius", "interstate_r","main_act_prov")
+risk_names <- c(
+  "mileage", "speeding_phk", "speeding_lvl", "acc_count_phk",
+  "dec_count_phk", "turn_count_phk", "lane_change_phk", "long_tr",
+  "late_night_tr", "holiday_tr", "high_curv_tr", "trip_dis_e",
+  "act_radius", "interstate_r", "main_act_prov"
+)
 
-tmp %>% 
+tmp %>%
   # drop out other cols
-  select(-user_id, -day_mileage) %>% 
+  select(-user_id, -day_mileage) %>%
   # get every risk factor specified score
-  rf2score(score_config_list = score_config_list) %>% 
+  rf2score(score_config_list = score_config_list) %>%
   # sum all risk factors socre by weight
   sum_rf_score(rf_weight) %>%
   .$score %>%
   # get score specified discount coef
   get_score_vec(discount_index$score, discount_index$coef)
 
-# all in one
-result <- cal_user_coef(tmp, risk_names, score_config_list, rf_weight, discount_index)
+#> [1] "done: acc_count_phk"
+#> [1] "done: act_radius"
+#> [1] "done: dec_count_phk"
+#> [1] "done: high_curv_tr"
+#> [1] "done: holiday_tr"
+#> [1] "done: interstate_r"
+#> [1] "done: lane_change_phk"
+#> [1] "done: late_night_tr"
+#> [1] "done: long_tr"
+#> [1] "done: main_act_prov"
+#> [1] "done: mileage"
+#> [1] "done: speeding_lvl"
+#> [1] "done: speeding_phk"
+#> [1] "done: trip_dis_e"
+#> [1] "done: turn_count_phk"
+#> [1] 0.8563817
 ```
 
-Here is the result table:
+```{r all-in-one,eval=FALSE}
+# all in one
+result <- cal_user_coef(tmp, risk_names, score_config_list, rf_weight, discount_index)
 
-```{r result-table, echo=FALSE}
+#> [1] "done: mileage"
+#> [1] "done: speeding_phk"
+#> [1] "done: speeding_lvl"
+#> [1] "done: acc_count_phk"
+#> [1] "done: dec_count_phk"
+#> [1] "done: turn_count_phk"
+#> [1] "done: lane_change_phk"
+#> [1] "done: long_tr"
+#> [1] "done: late_night_tr"
+#> [1] "done: holiday_tr"
+#> [1] "done: high_curv_tr"
+#> [1] "done: trip_dis_e"
+#> [1] "done: act_radius"
+#> [1] "done: interstate_r"
+#> [1] "done: main_act_prov"
+
 knitr::kable(result)
 ```
 
-<p style="text-align: center;margin-bottom:-5px;"> That's the end of doc! &nbsp;&nbsp; (我是有底线的 ^_^)</p>
--------------------------------------------------------------------------------
+| score| day_mileage| discount_coef| discount| delta|
+|:----:|:----------:|:------------:|:-------:|:----:|
+| 68.04|       12345|        0.8563|   0.1437|     0|

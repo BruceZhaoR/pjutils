@@ -1,13 +1,13 @@
 Package: pjutils
 Title: Pingjia data calculation tools
-Version: 0.0.0.9003
+Version: 0.0.0.9004
 Authors@R: c(
   person("Wei", "Zhao", email = "zhaowei@chinaubi.com", role = c("aut", "cre")),
-  person("Shanghai Pingjia Technology Co.,Ltd", role = "cph")
+  person("Pingjia Technology", role = c("cph","fnd"))
   )
 Description: Pingjia data calculation tools.
 License: MIT + file LICENSE
-URL: https://github.com/BruceZhaoR/pjutils
+URL: https://brucezhaor.github.io/pjutils, https://github.com/BruceZhaoR/pjutils
 BugReports: https://github.com/BruceZhaoR/pjutils/issues
 Depends: 
     R (>= 3.5)
@@ -29,4 +29,5 @@ VignetteBuilder: knitr
 ByteCompile: true
 Encoding: UTF-8
 LazyData: true
+Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace", "collate"))
 RoxygenNote: 6.1.0

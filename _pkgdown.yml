@@ -20,42 +20,12 @@ navbar:
   - icon: fa-github fa-lg
     href: https://github.com/BruceZhaoR/pjutils
 
-#  structure:
-#    left:
-#    - home
-#    - start
-#    - reference
-#    - articles
-#    - news
-#    right: github
-#  components:
-#    home:
-#      icon: fa-home fa-lg
-#      href: index.html
-#    start:
-#      text: Get Started
-#      href: articles/risk-factors-to-score.html
-#    reference:
-#      text: Reference
-#      href: reference/index.html
-#    articles:
-#      text: Articles
-#      menu:
-#      - text: A Demo of Risk Factors To Score
-#        href: articles/risk-factors-to-score.html
-#    news:
-#      text: Changelog
-#      href: news/index.html
-#    github:
-#      icon: fa-github fa-lg
-#      href: https://github.com/BruceZhaoR/pjutils
-
 authors:
   Wei Zhao:
     href: https://brucezhaor.github.io
-  Shanghai Pingjia Technology Co.,Ltd:
+  Pingjia Technology:
     href: http://www.chinaubi.com
-    html: '<img src="http://www.chinaubi.com/wp-content/uploads/2016/09/logo.png" height="24" /><span style="margin-left: -100px;">Shanghai Pingjia Technology Co.,Ltd:</span>'
+    html: '<img src="http://www.chinaubi.com/wp-content/uploads/2016/09/logo.png" height="24" /><span style="margin-left: -100px;">Pingjia Technology</span>'
 
 template:
   path: "./inst/pkgdown/templates"

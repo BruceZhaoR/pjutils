@@ -1,4 +1,11 @@
-# putils 0.0.0.9003
+# pjutils 0.0.0.9004
+
+* fix vignettes build error
+* fix travis ci build error
+* add img border line
+# rebuild pkgdown
+
+# pjutils 0.0.0.9003
 
 * change mathjax to cndjs
 * custom head with favicon.ico
