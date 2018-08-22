@@ -25,6 +25,17 @@ on_failure:
   - 7z a failure.zip *.Rcheck\*
   - appveyor PushArtifact failure.zip
 
+branches:
+  only:
+    - master
+
+matrix:
+  - R_VERSION: release
+    R_ARCH: x64
+    GCC_PATH: mingw_64
+    CRAN: https://cran.rstudio.com
+
+
 artifacts:
   - path: '*.Rcheck\**\*.log'
     name: Logs
@@ -43,3 +54,12 @@ artifacts:
 
   - path: '\*_*.zip'
     name: Bits
+
+notifications:
+ - provider: Email
+   to:
+     - brucezhaor@163.com
+     - zhaowei@chinaubi.com
+   on_build_success: false
+   on_build_failure: true
+   on_build_status_changed: true

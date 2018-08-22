@@ -8,10 +8,6 @@ r_check_args: '--as-cran'
 #r_build_args: '--no-build-vignettes'
 #r_check_args: '--as-cran --ignore-vignettes'
 
-os:
-  - linux
-  - osx
-
 brew_packages:
   - libgit2
 
@@ -19,14 +15,40 @@ r:
   - release
   - devel
 
-r_binary_packages:
-  - devtools
-  - Rcpp
-  - microbenchmark
+os:
+  - linux
+  - osx
+
+r_packages:
   - covr
+  - devtools
+  - ggplot2
+  - knitr
+  - microbenchmark
+  - Rcpp
+  - tibble
+
+branches:
+  only:
+  - master
+
+matrix:
+  fast_finish: true
+  allow_failures:
+    - os: osx
+      r: devel
 
 repos:
   CRAN: https://cloud.r-project.org
 
 after_success:
     - Rscript -e 'covr::codecov()'
+
+notifications:
+  email:
+    recipients:
+      - brucezhaor@163.com
+      - zhaowei@chinaubi.com
+    on_success: change
+    on_failure: always
+
