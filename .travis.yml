@@ -4,9 +4,9 @@ language: r
 sudo: required
 cache: packages
 
-r_check_args: '--as-cran'
+#r_check_args: '--as-cran'
 #r_build_args: '--no-build-vignettes'
-#r_check_args: '--as-cran --ignore-vignettes'
+r_check_args: '--as-cran --ignore-vignettes'
 
 brew_packages:
   - libgit2
@@ -22,11 +22,11 @@ os:
 r_packages:
   - covr
   - devtools
+  - dplyr
   - ggplot2
-  - knitr
   - microbenchmark
-  - Rcpp
-  - tibble
+  - rmarkdown
+  - testthat
 
 branches:
   only:
