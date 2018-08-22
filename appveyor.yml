@@ -31,18 +31,10 @@ branches:
 
 environment:
   matrix:
-    - R_VERSION: release
-      R_ARCH: x64
-      GCC_PATH: mingw_64
-      CRAN: https://cloud.r-project.org
-
-    - R_VERSION: devel
-      R_ARCH: x64
-      GCC_PATH: mingw_64
-      CRAN: https://cloud.r-project.org
-
     - R_VERSION: stable
-
+      R_ARCH: x64
+      GCC_PATH: mingw_64
+      CRAN: https://cloud.r-project.org
 
 artifacts:
   - path: '*.Rcheck\**\*.log'
