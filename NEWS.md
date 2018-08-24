@@ -1,9 +1,15 @@
+# pjtuils 0.0.0.9005
+
+* done travis build
+* done appveyor
+* fix doc link
+
 # pjutils 0.0.0.9004
 
 * fix vignettes build error
 * fix travis ci build error
 * add img border line
-# rebuild pkgdown
+* rebuild pkgdown
 
 # pjutils 0.0.0.9003
 
