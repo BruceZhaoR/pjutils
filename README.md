@@ -6,7 +6,7 @@
 
 # pjutils
 
-This package wrap some common funtions for daily work.
+This package wraps some common funtions for daily work.
 
 ## Installation
 
