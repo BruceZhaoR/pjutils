@@ -1,6 +1,6 @@
 Package: pjutils
 Title: Pingjia data calculation tools
-Version: 0.0.0.9005
+Version: 0.0.0.9006
 Authors@R: c(
   person("Wei", "Zhao", email = "zhaowei@chinaubi.com", role = c("aut", "cre")),
   person("Pingjia Technology", role = c("cph","fnd"))
