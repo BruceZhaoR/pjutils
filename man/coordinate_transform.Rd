@@ -23,17 +23,17 @@ wgs2bd(wgs_lon, wgs_lat)
 bd2wgs(bd_lon, bd_lat)
 }
 \arguments{
-\item{wgs_lon}{longitude}
+\item{wgs_lon}{WGS84 longitude}
 
-\item{wgs_lat}{latitude}
+\item{wgs_lat}{WGS84 latitude}
 
-\item{gcj_lon}{longitude}
+\item{gcj_lon}{GCJ02 longitude, gaode/tencent}
 
-\item{gcj_lat}{latitude}
+\item{gcj_lat}{GCJ02 latitude, gaode/tencent}
 
-\item{bd_lon}{longitude}
+\item{bd_lon}{BD09 longitude, baidu map}
 
-\item{bd_lat}{latitude}
+\item{bd_lat}{BD09 latitude, baidu map}
 }
 \value{
 Transformed vector of  longitude and latitude.

@@ -5,12 +5,12 @@
 #' GCJ02 is used by Gaode and Tencent,
 #' BD09 is used by Baidu.
 #'
-#' @param wgs_lon longitude
-#' @param wgs_lat latitude
-#' @param gcj_lon longitude
-#' @param gcj_lat latitude
-#' @param bd_lon longitude
-#' @param bd_lat latitude
+#' @param wgs_lon WGS84 longitude
+#' @param wgs_lat WGS84 latitude
+#' @param gcj_lon GCJ02 longitude, gaode/tencent
+#' @param gcj_lat GCJ02 latitude, gaode/tencent
+#' @param bd_lon BD09 longitude, baidu map
+#' @param bd_lat BD09 latitude, baidu map
 #' @return Transformed vector of  longitude and latitude.
 #' @name coordinate_transform
 #' @examples
