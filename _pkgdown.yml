@@ -62,6 +62,14 @@ reference:
   - title: Calculate AUC
     contents:
     - auc
+  - title: Coordinate transform
+    contents:
+    - wgs2gcj
+    - wgs2bd
+    - gcj2wgs
+    - gcj2bd
+    - bd2gcj
+    - bd2wgs
   - title: Helper
     contents:
     - pjutils
