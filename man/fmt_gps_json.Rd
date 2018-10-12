@@ -17,12 +17,17 @@ Your can see the package/inst/misc files.
 }
 \examples{
 \dontrun{
-test <- select(df, startLon, startLat, endLon, endLat)
-as_tibble(t(apply(test, 1, function(x) {
-  x <- as.numeric(x)
-  start_gps <- wgs2bd(x[1], x[2])
-  end_gps <- wgs2bd(x[3], x[4])
-  c(start_gps[1], start_gps[2], end_gps[1], end_gps[2])
-})))
+gps_trans <- function(df) {
+  test <- select(df, startLon, startLat, endLon, endLat)
+  as_tibble(t(apply(test, 1, function(x) {
+    x <- as.numeric(x)
+    start_gps <- wgs2bd(x[1], x[2])
+    end_gps <- wgs2bd(x[3], x[4])
+    c(start_gps[1], start_gps[2], end_gps[1], end_gps[2])
+  })))
+}
+usr_data <- purrr::map(usr_ids, ~ filter(pam_data, userId == .x))
+all <- map(lapply(usr_data, gps_trans), ~ fmt_gps_json(.x))
+
 }
 }
