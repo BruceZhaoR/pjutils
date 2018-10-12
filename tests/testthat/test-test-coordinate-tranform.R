@@ -39,5 +39,7 @@ test_that("coordinate-tranform works",{
 
   expect_true(out_of_china(1,1))
   expect_true(out_of_china(121,0))
+  df <- data.frame(wgs_lon, wgs_lat, bd_lon, bd_lat)
+  expect_silent(fmt_gps_json(df))
 })
 

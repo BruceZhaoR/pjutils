@@ -182,3 +182,28 @@ bd2wgs <- function(bd_lon, bd_lat){
   c(wgs_lon, wgs_lat)
 }
 
+#' Generate GPS lines data for echarts
+#'
+#' Your can see the package/inst/misc files.
+#'
+#' @param df data.frame with starLon, starLat, endLon, endLat
+#'
+#' @return json txt
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' test <- select(df, startLon, startLat, endLon, endLat)
+#' as_tibble(t(apply(test, 1, function(x) {
+#'   x <- as.numeric(x)
+#'   start_gps <- wgs2bd(x[1], x[2])
+#'   end_gps <- wgs2bd(x[3], x[4])
+#'   c(start_gps[1], start_gps[2], end_gps[1], end_gps[2])
+#' })))
+#'}
+fmt_gps_json <- function(df) {
+  list_mat <- df %>%
+    purrr::pmap( ~ matrix(c(..1, ..2, ..3, ..4), byrow = TRUE, ncol = 2))
+  tibble::tibble(coords = list_mat) %>%
+    jsonlite::toJSON()
+}

@@ -1,3 +1,6 @@
+#' @importFrom magrittr %>%
+#' @export
+magrittr::`%>%`
 
 #' Get the position of x in vector y
 #'

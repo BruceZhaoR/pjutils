@@ -12,17 +12,20 @@ BugReports: https://github.com/BruceZhaoR/pjutils/issues
 Depends: 
     R (>= 3.5)
 Imports: 
-    Rcpp
+    Rcpp,
+    tibble,
+    magrittr
 Suggests: 
     dplyr,
     knitr,
     rmarkdown,
     testthat,
-    tibble,
     tidyselect,
     microbenchmark,
     ggplot2,
-    covr
+    covr,
+    jsonlite,
+    purrr
 LinkingTo: 
     Rcpp
 VignetteBuilder: knitr
