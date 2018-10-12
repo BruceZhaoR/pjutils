@@ -27,6 +27,8 @@ r_packages:
   - microbenchmark
   - rmarkdown
   - testthat
+  - jsonlite
+  - purrr
 
 branches:
   only:
