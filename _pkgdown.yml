@@ -58,7 +58,6 @@ reference:
     - fill_na
     - fill_na.data.frame
     - fill_na.tbl_df
-    - fill_na.grouped_df
   - title: Calculate AUC
     contents:
     - auc

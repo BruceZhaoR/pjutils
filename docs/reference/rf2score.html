@@ -176,8 +176,8 @@ factors names should be the same.</p>
 , <span class='st'>"mileage"</span>,<span class='st'>"speeding_lvl"</span>, <span class='st'>"speeding_phk"</span>, <span class='st'>"trip_dis_e"</span>, <span class='st'>"turn_count_phk"</span>,<span class='st'>"user_id"</span>)
 <span class='fu'>names</span>(<span class='no'>pj_rf</span>) <span class='kw'>&lt;-</span> <span class='no'>nameTmp</span>
 
-<span class='no'>risk_factor_names</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/dplyr/topics/setops'>setdiff</a></span>(<span class='no'>nameTmp</span>, <span class='fu'>c</span>(<span class='st'>"user_id"</span>,<span class='st'>"main_act_prov"</span>))
-<span class='no'>pj_rf</span> <span class='kw'>&lt;-</span> <span class='no'>pj_rf</span> <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/dplyr/topics/select'>select</a></span>(!!<span class='no'>risk_factor_names</span>)
+<span class='no'>risk_factor_names</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://dplyr.tidyverse.org/reference/setops.html'>setdiff</a></span>(<span class='no'>nameTmp</span>, <span class='fu'>c</span>(<span class='st'>"user_id"</span>,<span class='st'>"main_act_prov"</span>))
+<span class='no'>pj_rf</span> <span class='kw'>&lt;-</span> <span class='no'>pj_rf</span> <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://dplyr.tidyverse.org/reference/select.html'>select</a></span>(!!<span class='no'>risk_factor_names</span>)
 
 <span class='fu'>rf2score</span>(<span class='no'>pj_rf</span>, <span class='no'>score_config_list</span>)
 <span class='co'># }</span><div class='input'>
