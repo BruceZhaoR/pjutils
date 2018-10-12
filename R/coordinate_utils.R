@@ -69,16 +69,16 @@ NULL
 
 
 # long semidiameter
-a = 6378245.0;
+a <- 6378245.0
 # oblateness
-ee = 0.00669342162296594323;
+ee <- 0.00669342162296594323
 
 # Check whether the coordinate in China.
 out_of_china <- function(lon, lat) {
   if(lon < 72.004 || lon > 137.8347) {
     return(TRUE)
   } else if(lat < 0.8293 || lat > 55.8271) {
-    return(TRUE);
+    return(TRUE)
   } else {
     FALSE
   }
@@ -86,18 +86,18 @@ out_of_china <- function(lon, lat) {
 
 
 transform_lat <- function(lon, lat) {
-  ret = -100.0 + 2.0 * lon + 3.0 * lat + 0.2 * lat * lat + 0.1 * lon * lat + 0.2 * sqrt(abs(lon));
-  ret = ret + (20.0 * sin(6.0 * lon * pi) + 20.0 * sin(2.0 * lon * pi)) * 2.0 / 3.0;
-  ret = ret + (20.0 * sin(lat * pi) + 40.0 * sin(lat / 3.0 * pi)) * 2.0 / 3.0;
-  ret = ret + (160.0 * sin(lat / 12.0 * pi) + 320 * sin(lat * pi / 30.0)) * 2.0 / 3.0;
-  ret;
+  ret <- -100.0 + 2.0 * lon + 3.0 * lat + 0.2 * lat * lat + 0.1 * lon * lat + 0.2 * sqrt(abs(lon))
+  ret <- ret + (20.0 * sin(6.0 * lon * pi) + 20.0 * sin(2.0 * lon * pi)) * 2.0 / 3.0
+  ret <- ret + (20.0 * sin(lat * pi) + 40.0 * sin(lat / 3.0 * pi)) * 2.0 / 3.0
+  ret <- ret + (160.0 * sin(lat / 12.0 * pi) + 320 * sin(lat * pi / 30.0)) * 2.0 / 3.0
+  ret
 }
 
 transform_lon <- function(lon, lat) {
-  ret = 300.0 + lon + 2.0 * lat + 0.1 * lon * lon + 0.1 * lon * lat + 0.1 * sqrt(abs(lon));
-  ret = ret + (20.0 * sin(6.0 * lon * pi) + 20.0 * sin(2.0 * lon * pi)) * 2.0 / 3.0;
-  ret = ret + (20.0 * sin(lon * pi) + 40.0 * sin(lon / 3.0 * pi)) * 2.0 / 3.0;
-  ret = ret + (150.0 * sin(lon / 12.0 * pi) + 300.0 * sin(lon / 30.0 * pi)) * 2.0 / 3.0;
+  ret <- 300.0 + lon + 2.0 * lat + 0.1 * lon * lon + 0.1 * lon * lat + 0.1 * sqrt(abs(lon))
+  ret <- ret + (20.0 * sin(6.0 * lon * pi) + 20.0 * sin(2.0 * lon * pi)) * 2.0 / 3.0
+  ret <- ret + (20.0 * sin(lon * pi) + 40.0 * sin(lon / 3.0 * pi)) * 2.0 / 3.0
+  ret <- ret + (150.0 * sin(lon / 12.0 * pi) + 300.0 * sin(lon / 30.0 * pi)) * 2.0 / 3.0
   ret
 }
 
@@ -106,14 +106,14 @@ transform_lon <- function(lon, lat) {
 #' @rdname coordinate_transform
 wgs2gcj <- function(wgs_lon, wgs_lat) {
   stopifnot(!out_of_china(wgs_lon, wgs_lat))
-  dlat = transform_lat(wgs_lon - 105.0, wgs_lat - 35.0)
-  dlon = transform_lon(wgs_lon - 105.0, wgs_lat - 35.0)
-  rad_lat = wgs_lat / 180.0 * pi
-  magic = 1 - ee * (sin(rad_lat))^2
-  dlat = (dlat * 180.0) / ((a * (1-ee)) / (magic * sqrt(magic)) * pi)
-  dlon = (dlon * 180.0) / (a / sqrt(magic) * cos(rad_lat) * pi)
-  gd_lat = wgs_lat + dlat
-  gd_lon = wgs_lon + dlon
+  dlat <- transform_lat(wgs_lon - 105.0, wgs_lat - 35.0)
+  dlon <- transform_lon(wgs_lon - 105.0, wgs_lat - 35.0)
+  rad_lat <- wgs_lat / 180.0 * pi
+  magic <- 1 - ee * (sin(rad_lat))^2
+  dlat <- (dlat * 180.0) / ((a * (1-ee)) / (magic * sqrt(magic)) * pi)
+  dlon <- (dlon * 180.0) / (a / sqrt(magic) * cos(rad_lat) * pi)
+  gd_lat <- wgs_lat + dlat
+  gd_lon <- wgs_lon + dlon
   c(gd_lon, gd_lat)
 }
 
@@ -123,14 +123,14 @@ wgs2gcj <- function(wgs_lon, wgs_lat) {
 #' @rdname coordinate_transform
 gcj2wgs <- function(gcj_lon, gcj_lat) {
   stopifnot(!out_of_china(gcj_lon, gcj_lat))
-  dlat = transform_lat(gcj_lon - 105.0, gcj_lat - 35.0)
-  dlon = transform_lon(gcj_lon - 105.0, gcj_lat - 35.0)
-  rad_lat = gcj_lat/ 180.0 * pi
-  magic = 1 - ee * (sin(rad_lat))^2
-  dlat = (dlat * 180.0) / ((a * (1- ee)) / (magic * sqrt(magic)) * pi)
-  dlon = (dlon * 180.0) / (a / sqrt(magic) * cos(rad_lat) * pi)
-  wgs_lat = gcj_lat + dlat
-  wgs_lon = gcj_lon + dlon
+  dlat <- transform_lat(gcj_lon - 105.0, gcj_lat - 35.0)
+  dlon <- transform_lon(gcj_lon - 105.0, gcj_lat - 35.0)
+  rad_lat <- gcj_lat/ 180.0 * pi
+  magic <- 1 - ee * (sin(rad_lat))^2
+  dlat <- (dlat * 180.0) / ((a * (1- ee)) / (magic * sqrt(magic)) * pi)
+  dlon <- (dlon * 180.0) / (a / sqrt(magic) * cos(rad_lat) * pi)
+  wgs_lat <- gcj_lat * 2 - (gcj_lat + dlat)
+  wgs_lon <- gcj_lon * 2 - (gcj_lon + dlon)
   c(wgs_lon, wgs_lat)
 }
 
@@ -138,11 +138,11 @@ gcj2wgs <- function(gcj_lon, gcj_lat) {
 #' @export
 #' @rdname coordinate_transform
 gcj2bd <- function(gcj_lon, gcj_lat) {
-  x_pi = pi * 3000.0 / 180.0
-  z = sqrt(gcj_lon^2 + gcj_lat^2) + 0.00002 * sin(gcj_lat * x_pi)
-  theta = atan2(gcj_lat, gcj_lon) + 0.000003 * cos(gcj_lon * x_pi)
-  bd_lon = z * cos(theta) + 0.0065
-  bd_lat = z * sin(theta) + 0.006
+  x_pi <- pi * 3000.0 / 180.0
+  z <- sqrt(gcj_lon^2 + gcj_lat^2) + 0.00002 * sin(gcj_lat * x_pi)
+  theta <- atan2(gcj_lat, gcj_lon) + 0.000003 * cos(gcj_lon * x_pi)
+  bd_lon <- z * cos(theta) + 0.0065
+  bd_lat <- z * sin(theta) + 0.006
   c(bd_lon, bd_lat)
 }
 
@@ -150,13 +150,13 @@ gcj2bd <- function(gcj_lon, gcj_lat) {
 #' @export
 #' @rdname coordinate_transform
 bd2gcj <- function(bd_lon, bd_lat) {
-  x_pi = pi * 3000.0 / 180.0
-  x = bd_lon - 0.0065
-  y = bd_lat - 0.006
-  z = sqrt(x * x + y * y) - 0.00002 * sin(y * x_pi)
-  theta = atan2(y, x) - 0.000003 * cos(x * x_pi)
-  gd_lon = z * cos(theta)
-  gd_lat = z * sin(theta)
+  x_pi <- pi * 3000.0 / 180.0
+  x <- bd_lon - 0.0065
+  y <- bd_lat - 0.006
+  z <- sqrt(x * x + y * y) - 0.00002 * sin(y * x_pi)
+  theta <- atan2(y, x) - 0.000003 * cos(x * x_pi)
+  gd_lon <- z * cos(theta)
+  gd_lat <- z * sin(theta)
   c(gd_lon, gd_lat)
 }
 

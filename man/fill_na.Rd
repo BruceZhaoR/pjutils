@@ -5,7 +5,6 @@
 \alias{fill_na.default}
 \alias{fill_na.tbl_df}
 \alias{fill_na.data.frame}
-\alias{fill_na.grouped_df}
 \title{Fill NA with the last no-NA value generic.}
 \usage{
 fill_na(x, ...)
@@ -15,8 +14,6 @@ fill_na(x, ...)
 \method{fill_na}{tbl_df}(x, ...)
 
 \method{fill_na}{data.frame}(x, ...)
-
-\method{fill_na}{grouped_df}(x, ...)
 }
 \arguments{
 \item{x}{a data.frame or a vector}
@@ -37,9 +34,12 @@ xy <- data.frame(x,y)
 fill_na(x)
 fill_na(y)
 \dontrun{
+# require(dplyr)
 fill_na(xy, x, y)
 fill_na(xy, c("x","y"))
 fill_na(xy, starts_with("x"))
 }
-
+}
+\seealso{
+\code{\link[tidyr]{fill}} \code{\link[dplyr]{group_by}}
 }

@@ -51,7 +51,8 @@ get_score <- function(riskfactor, values, scores) {
     if (riskfactor %in% values) {
       idx <- grep(riskfactor, values, fixed = TRUE)
     } else {
-      warning("the riskfactor is not in the values, use the first value score as default.",
+      warning("the riskfactor is not in the values,
+              \ruse the first value score as default.",
         call. = FALSE
       )
       idx <- 1
@@ -127,7 +128,8 @@ rf2score <- function(rf_df, score_config_list) {
   check_names <- unlist(lapply(rf_names, paste0, c("_values", "_scores")))
   miss_names <- setdiff(check_names, names(score_config_list))
   if (length(miss_names) > 1) {
-    stop("Please check score_config_list names which should contain all risk factors' names")
+    stop("Please check score_config_list names which should contain all risk
+         factors' names")
   }
 
   user_score <- matrix(data = NA, nrow = df_dim[1], ncol = df_dim[2])

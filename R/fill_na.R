@@ -15,10 +15,12 @@
 #' fill_na(x)
 #' fill_na(y)
 #' \dontrun{
+#' # require(dplyr)
 #' fill_na(xy, x, y)
 #' fill_na(xy, c("x","y"))
 #' fill_na(xy, starts_with("x"))
 #' }
+#' @seealso \code{\link[tidyr]{fill}} \code{\link[dplyr]{group_by}}
 #'
 #' @export
 fill_na <- function(x, ...) {
@@ -65,13 +67,3 @@ fill_na.data.frame <- function(x, ...) {
   }
 }
 
-#' @inheritParams fill_na
-#' @export
-#' @rdname fill_na
-fill_na.grouped_df <- function(x, ...) {
-  if (requireNamespace("dplyr", quietly = TRUE)) {
-    dplyr::do(x, fill_na(...))
-  } else {
-    print("please library(dplyr) ")
-  }
-}
