@@ -186,7 +186,7 @@ bd2wgs <- function(bd_lon, bd_lat){
 #'
 #' Your can see the package/inst/misc files.
 #'
-#' @param df data.frame with starLon, starLat, endLon, endLat
+#' @param df data.frame with starLon, starLat, endLon, endLat.
 #'
 #' @return json txt
 #' @export

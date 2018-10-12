@@ -1,6 +1,7 @@
 # pjutils 0.0.0.9006
 
 * add coordinate transform funs
+* add fun to transform df to gps echarts lines json data.
 
 # pjtuils 0.0.0.9005
 

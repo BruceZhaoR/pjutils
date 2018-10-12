@@ -7,7 +7,7 @@
 fmt_gps_json(df)
 }
 \arguments{
-\item{df}{data.frame with starLon, starLat, endLon, endLat}
+\item{df}{data.frame with starLon, starLat, endLon, endLat.}
 }
 \value{
 json txt
