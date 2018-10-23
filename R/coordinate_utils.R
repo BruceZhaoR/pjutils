@@ -62,7 +62,7 @@
 #' t(apply(test, 1, function(x) {
 #'   start_gps <- wgs2bd(x[1], x[2])
 #'   end_gps <- wgs2bd(x[3], x[4])
-#'   c(start_gps[1], start_gps[2], end_gps[1], end_gps[2])
+#'   c(start_gps, end_gps)
 #' }))
 #'
 NULL
@@ -105,7 +105,10 @@ transform_lon <- function(lon, lat) {
 #' @export
 #' @rdname coordinate_transform
 wgs2gcj <- function(wgs_lon, wgs_lat) {
-  stopifnot(!out_of_china(wgs_lon, wgs_lat))
+  if(out_of_china(wgs_lon, wgs_lat)){
+    warning("gps out of China, set to 0.",call. = FALSE)
+    return(c(0.0, 0.0))
+  }
   dlat <- transform_lat(wgs_lon - 105.0, wgs_lat - 35.0)
   dlon <- transform_lon(wgs_lon - 105.0, wgs_lat - 35.0)
   rad_lat <- wgs_lat / 180.0 * pi
@@ -122,7 +125,10 @@ wgs2gcj <- function(wgs_lon, wgs_lat) {
 #' @export
 #' @rdname coordinate_transform
 gcj2wgs <- function(gcj_lon, gcj_lat) {
-  stopifnot(!out_of_china(gcj_lon, gcj_lat))
+  if(out_of_china(gcj_lon, gcj_lat)){
+    warning("gps out of China, set to 0.",call. = FALSE)
+    return(c(0.0, 0.0))
+  }
   dlat <- transform_lat(gcj_lon - 105.0, gcj_lat - 35.0)
   dlon <- transform_lon(gcj_lon - 105.0, gcj_lat - 35.0)
   rad_lat <- gcj_lat/ 180.0 * pi
@@ -138,6 +144,10 @@ gcj2wgs <- function(gcj_lon, gcj_lat) {
 #' @export
 #' @rdname coordinate_transform
 gcj2bd <- function(gcj_lon, gcj_lat) {
+  if(out_of_china(gcj_lon, gcj_lat)){
+    warning("gps out of China, set to 0.",call. = FALSE)
+    return(c(0.0, 0.0))
+  }
   x_pi <- pi * 3000.0 / 180.0
   z <- sqrt(gcj_lon^2 + gcj_lat^2) + 0.00002 * sin(gcj_lat * x_pi)
   theta <- atan2(gcj_lat, gcj_lon) + 0.000003 * cos(gcj_lon * x_pi)
@@ -150,6 +160,10 @@ gcj2bd <- function(gcj_lon, gcj_lat) {
 #' @export
 #' @rdname coordinate_transform
 bd2gcj <- function(bd_lon, bd_lat) {
+  if(out_of_china(bd_lon, bd_lat)){
+    warning("gps out of China, set to 0.",call. = FALSE)
+    return(c(0.0, 0.0))
+  }
   x_pi <- pi * 3000.0 / 180.0
   x <- bd_lon - 0.0065
   y <- bd_lat - 0.006

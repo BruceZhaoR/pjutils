@@ -93,7 +93,7 @@ wgs2bd(wgs_lon, wgs_lat)#baidu
 t(apply(test, 1, function(x) {
   start_gps <- wgs2bd(x[1], x[2])
   end_gps <- wgs2bd(x[3], x[4])
-  c(start_gps[1], start_gps[2], end_gps[1], end_gps[2])
+  c(start_gps, end_gps)
 }))
 
 }
