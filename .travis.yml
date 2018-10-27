@@ -3,6 +3,8 @@
 language: r
 sudo: required
 cache: packages
+latex: false
+fortran: false
 
 #r_check_args: '--as-cran'
 #r_build_args: '--no-build-vignettes'
@@ -40,6 +42,13 @@ matrix:
     - os: osx
       r: devel
 
+env:
+  global:
+  - _R_CHECK_FORCE_SUGGESTS_=false
+  - MAKEFLAGS="-j 2"
+  - TRAVIS_CXXFLAGS="-Wall -Wextra -pedantic -Werror"
+  - R_REMOTES_NO_ERRORS_FROM_WARNINGS=true
+
 repos:
   CRAN: https://cloud.r-project.org
 
@@ -53,4 +62,3 @@ notifications:
       - zhaowei@chinaubi.com
     on_success: change
     on_failure: always
-
