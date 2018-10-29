@@ -198,7 +198,7 @@ bd2wgs <- function(bd_lon, bd_lat){
 
 #' Generate GPS lines data for echarts
 #'
-#' Your can see the package/inst/misc files.
+#' Your can see the package/misc files.
 #'
 #' @param df data.frame with starLon, starLat, endLon, endLat.
 #'
@@ -225,4 +225,37 @@ fmt_gps_json <- function(df) {
     purrr::pmap( ~ matrix(c(..1, ..2, ..3, ..4), byrow = TRUE, ncol = 2))
   tibble::tibble(coords = list_mat) %>%
     jsonlite::toJSON()
+}
+
+
+# to rad
+to_rad <- function(gps){
+  gps / 180 * pi
+}
+
+#' Calculate earth distance between two points gps longitude and latitude.
+#'
+#' @param lon_s Start gps longitude
+#' @param lat_s Start gps latitude
+#' @param lon_e End gps longitude
+#' @param lat_e End gps latitude
+#'
+#' @return Distance of double type in meters.
+#' @export
+#'
+#' @examples
+#' cal_gps_dist(121.434174,31.158213,121.444366,31.169403)
+#' # meters
+cal_gps_dist <- function(lon_s, lat_s, lon_e, lat_e){
+  lon_s <- to_rad(lon_s)
+  lat_s <- to_rad(lat_s)
+  lon_e <- to_rad(lon_e)
+  lat_e <- to_rad(lat_e)
+
+  r <- 6378160 # meter
+
+  tmp <- (sin((lat_e - lat_s) / 2))^2 +
+    cos(lat_s)*cos(lat_e) * (sin((lon_e - lon_s)/2))^2
+
+  2 * r * asin(sqrt(tmp))
 }

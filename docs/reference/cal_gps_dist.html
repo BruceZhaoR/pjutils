@@ -10,7 +10,7 @@
 <meta name="renderer" content="webkit">
 <link rel="shortcut icon" href="../favicon.ico">
 
-<title>Generate GPS lines data for echarts — fmt_gps_json • pjutils</title>
+<title>Calculate earth distance between two points gps longitude and latitude. — cal_gps_dist • pjutils</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -34,9 +34,9 @@
 
 
 
-<meta property="og:title" content="Generate GPS lines data for echarts — fmt_gps_json" />
+<meta property="og:title" content="Calculate earth distance between two points gps longitude and latitude. — cal_gps_dist" />
 
-<meta property="og:description" content="Your can see the package/misc files." />
+<meta property="og:description" content="Calculate earth distance between two points gps longitude and latitude." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -120,48 +120,48 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Generate GPS lines data for echarts</h1>
+    <h1>Calculate earth distance between two points gps longitude and latitude.</h1>
     <small class="dont-index">Source: <a href='https://github.com/BruceZhaoR/pjutils/blob/master/R/coordinate_utils.R'><code>R/coordinate_utils.R</code></a></small>
-    <div class="hidden name"><code>fmt_gps_json.Rd</code></div>
+    <div class="hidden name"><code>cal_gps_dist.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Your can see the package/misc files.</p>
+    <p>Calculate earth distance between two points gps longitude and latitude.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>fmt_gps_json</span>(<span class='no'>df</span>)</pre>
+    <pre class="usage"><span class='fu'>cal_gps_dist</span>(<span class='no'>lon_s</span>, <span class='no'>lat_s</span>, <span class='no'>lon_e</span>, <span class='no'>lat_e</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>df</th>
-      <td><p>data.frame with starLon, starLat, endLon, endLat.</p></td>
+      <th>lon_s</th>
+      <td><p>Start gps longitude</p></td>
+    </tr>
+    <tr>
+      <th>lat_s</th>
+      <td><p>Start gps latitude</p></td>
+    </tr>
+    <tr>
+      <th>lon_e</th>
+      <td><p>End gps longitude</p></td>
+    </tr>
+    <tr>
+      <th>lat_e</th>
+      <td><p>End gps latitude</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>json txt</p>
+    <p>Distance of double type in meters.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='co'># NOT RUN {</span>
-<span class='no'>gps_trans</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>df</span>) {
-  <span class='no'>test</span> <span class='kw'>&lt;-</span> <span class='fu'>select</span>(<span class='no'>df</span>, <span class='no'>startLon</span>, <span class='no'>startLat</span>, <span class='no'>endLon</span>, <span class='no'>endLat</span>)
-  <span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/as_tibble'>as_tibble</a></span>(<span class='fu'>t</span>(<span class='fu'>apply</span>(<span class='no'>test</span>, <span class='fl'>1</span>, <span class='kw'>function</span>(<span class='no'>x</span>) {
-    <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>as.numeric</span>(<span class='no'>x</span>)
-    <span class='no'>start_gps</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='coordinate_transform.html'>wgs2bd</a></span>(<span class='no'>x</span>[<span class='fl'>1</span>], <span class='no'>x</span>[<span class='fl'>2</span>])
-    <span class='no'>end_gps</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='coordinate_transform.html'>wgs2bd</a></span>(<span class='no'>x</span>[<span class='fl'>3</span>], <span class='no'>x</span>[<span class='fl'>4</span>])
-    <span class='fu'>c</span>(<span class='no'>start_gps</span>[<span class='fl'>1</span>], <span class='no'>start_gps</span>[<span class='fl'>2</span>], <span class='no'>end_gps</span>[<span class='fl'>1</span>], <span class='no'>end_gps</span>[<span class='fl'>2</span>])
-  })))
-}
-<span class='no'>usr_data</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>purrr</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/purrr/topics/map'>map</a></span>(<span class='no'>usr_ids</span>, ~ <span class='fu'>filter</span>(<span class='no'>pam_data</span>, <span class='no'>userId</span> <span class='kw'>==</span> <span class='no'>.x</span>))
-<span class='no'>all</span> <span class='kw'>&lt;-</span> <span class='fu'>map</span>(<span class='fu'>lapply</span>(<span class='no'>usr_data</span>, <span class='no'>gps_trans</span>), ~ <span class='fu'>fmt_gps_json</span>(<span class='no'>.x</span>))
-
-<span class='co'># }</span></pre>
+    <pre class="examples"><div class='input'><span class='fu'>cal_gps_dist</span>(<span class='fl'>121.434174</span>,<span class='fl'>31.158213</span>,<span class='fl'>121.444366</span>,<span class='fl'>31.169403</span>)</div><div class='output co'>#&gt; [1] 1579.313</div><div class='input'># meters
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

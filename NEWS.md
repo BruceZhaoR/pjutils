@@ -2,6 +2,7 @@
 
 * add coordinate transform funs
 * add fun to transform df to gps echarts lines json data.
+* add `cal_gps_dist` to calculate two points distance in earth.
 
 # pjtuils 0.0.0.9005
 

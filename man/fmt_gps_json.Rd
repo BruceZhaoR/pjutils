@@ -13,7 +13,7 @@ fmt_gps_json(df)
 json txt
 }
 \description{
-Your can see the package/inst/misc files.
+Your can see the package/misc files.
 }
 \examples{
 \dontrun{

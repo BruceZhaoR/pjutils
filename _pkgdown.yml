@@ -69,6 +69,7 @@ reference:
     - gcj2bd
     - bd2gcj
     - bd2wgs
+    - cal_gps_dist
   - title: Json format transform
     contents:
     - fmt_gps_json
